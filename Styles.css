@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+     font-family: "Roboto", sans-serif;
+}
+/*.box{
+    height: 200px;
+    width: 500px; 
+    background-color: red;
+    border: 5px solid steelblue;
+    border-radius: 5px 10px 50px 100px;
+    box-sizing: border-box;
+    box-shadow:5px 5px 0px 5px black;
+    position: sticky;
+    top: 0;
+    left: 0; *
+    position: relative;
+
+} */
+/* .box > p{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: line-through; 
+    letter-spacing:5px ;
+    font-weight: 900;
+    font-size: 20px;
+    word-spacing: 10px;
+    line-height: 20px;
+    font-style: italic;
+    text-shadow: 2px 2px green;
+} */
+.para{
+    text-align: center;
+}
+#link{
+    text-align: center;
+    text-decoration: none;
+}
+
+/* fixed
+static
+sticky
+relative 
+absolulte */
+
+
+/* after */
+/* a{ 
+    text-decoration: none;
+    margin-left: 100px;
+}
+a::after{
+    content: "Next";
+}
+a:hover{
+    background-color: aqua;
+    color: rebeccapurple;
+}
+.box:nth-child(5){
+    width: 200px;
+    height: 200px;
+    background-color: palegreen;
+     transform: translate(20px,50px); 
+    transform: rotate(45deg); 
+    transform: scale(1);
+    transition: 3s ease;
+}
+/* .box:nth-child(even){
+    width: 200px;
+    height: 200px;
+    background-color: rgb(4, 16, 240);
+}
+.box:nth-child(5):hover{
+    transform: scale(1.5);
+    transition: 3s ease;
+} */
+/* .box1{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    cursor: pointer;
+}
+     */
+.boxes{
+    height: 100vh;
+    display: flex;
+    gap: 2px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(4, 16, 240);
+}
+
+.box1{
+    /* flex-shrink: 0; */
+    /* flex-grow: 3; */
+    flex-basis: 450px;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
