@@ -84,7 +84,7 @@ a:hover{
     cursor: pointer;
 }
      */
-.boxes{
+/* .boxes{
     height: 100vh;
     display: flex;
     gap: 2px;
@@ -92,22 +92,95 @@ a:hover{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
-.box{
+} */
+/* .box{
     width: 200px;
     height: 200px;
     background-color: rgb(4, 16, 240);
-}
+} */
 
 .box1{
     /* flex-shrink: 0; */
     /* flex-grow: 3; */
-    flex-basis: 450px;
+    /* flex-basis: 450px; */
 }
 
-.box{
+/* .box{
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+} */
+
+
+/* .grid{
+    display: grid;
+    gap: 10px;
+    grid-template-columns:300px 300px 300px 300px;
+    grid-template-columns:repeat(3,300px);
+    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,minmax(150px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    grid-template-rows: 500px 150px 250px;
+}
+.container_box{
+    width: 300px;
+     height: 300px; 
+    background-color: purple;
+}
+.box2{
+    grid-column: span 2;
+} */
+
+.grid_example{
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    "h h h"
+    "s c1 c1"
+    "s c2 c3"
+    "f f f";
+    gap: 10px;
+}
+.header{
+    grid-area:h ;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar{
+    grid-area: s;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    grid-area: c1;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content2{
+    grid-area: c2;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content3{
+    grid-area: c3;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer{
+    grid-area: f;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
