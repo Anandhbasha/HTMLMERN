@@ -600,3 +600,27 @@ newDiv.appendChild(prodName)
 newDiv.appendChild(prodPrice)
 newDiv.appendChild(btn)
 
+
+
+
+
+const person = {
+    name:"xyz",
+    age:20
+}
+
+
+arr = [[70,77,80],[82,55,90]]
+console.log(Object.entries(person));
+
+for (let x of arr){
+    for(j of x){
+        if(j>=70){
+            console.log("selected");            
+        }
+        else{
+            console.log("Not selected");            
+        }      
+    }
+    
+}
