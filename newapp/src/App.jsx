@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  let [count,setCount] = useState(0)
+  let [bg,setBg] = useState("dark")
+  const option = [10,20,30,40,50]
+  const handleCount = ()=>{
+   setCount(++count)
+    console.log(count);    
+  }
+  const handleBg = ()=>{
+    setBg(bg==="dark"?"light":"dark")
+  }
+  let [filter,setFilter] = useState(10)
 
+  const handleDrop = (event)=>{
+      setFilter(event.target.value)
+    console.log(filter);
+  }
+  
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='App'>
+      <button onClick={handleCount}>Count{count}</button>
+      <button onClick={handleBg} style={{backgroundColor:bg==="dark"?"black":"white",color:bg==="dark"?"white":"black"}}>{bg}</button>
+      <select onChange={handleDrop}>
+        {option.map((x)=>(
+          <option value={x}>{x}</option>
+        ))}
+      </select>
+    </div>
   )
 }
 
