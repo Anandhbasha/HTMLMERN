@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import './AllProducts.css'
+import Card from '../../Components/Cards/Card'
+import { PassingValue } from '../../App'
 
 const AllProducts = () => {
+ const allProducts = useContext(PassingValue)
   return (
-    <div>AllProducts</div>
+    <div className='AllProducts'>
+      {allProducts.map((item)=>(
+        <Card {...item}/>
+      ))}
+    </div>
   )
 }
 
