@@ -1,10 +1,18 @@
-export const read = (req,res)=>{
-    res.json("Node js is perfectly working");    
+import User from "../Model/schema.js"
+
+export const read = async(req,res)=>{
+    const studInfo = await User.find()
+    return res.json(studInfo)
 }
 
-export const insert = (req,res)=>{
+export const insert = async(req,res)=>{
     const {userName,Password} = req.body
-    res.json(`The userName is ${userName},The user Password is ${Password}`)
+    const existUser = await User.findOne({userName})
+    if(existUser){
+        return res.json({message:"User Already exist"})
+    }
+    const insertNew = await User({userName,Password}).save()
+    return res.json({message:"New user Addes Sucessfully",insertNew})
 }
 export const edit = (req,res)=>{
     const {id} = req.params

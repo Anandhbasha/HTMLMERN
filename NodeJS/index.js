@@ -1,8 +1,10 @@
 import express from 'express'
 import route from './Router/Router.js'
+import dataBase from './Database/Db.js'
 const app = express()
 
 const PORT = 8888
+dataBase("mongodb://127.0.0.1:27017/Newone")
 app.use(express.json())
 app.use('/',route)
 app.listen(PORT,()=>{
