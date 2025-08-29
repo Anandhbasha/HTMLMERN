@@ -7,8 +7,8 @@ route.get('/',read)
 
 route.post('/insert',insert)
 
-route.put('/update/:id',edit)
-route.delete('/delete/:id',deleteUser)
+route.put('/update/:userName',edit)
+route.delete('/delete/:userName',deleteUser)
 
 export default route
 

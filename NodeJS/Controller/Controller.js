@@ -14,12 +14,28 @@ export const insert = async(req,res)=>{
     const insertNew = await User({userName,Password}).save()
     return res.json({message:"New user Addes Sucessfully",insertNew})
 }
-export const edit = (req,res)=>{
-    const {id} = req.params
-    const {userName} = req.body
-    res.json(`The ${id} of the userName is ${userName} is Updated`)
+export const edit = async(req,res)=>{
+    try {
+        const {userName} = req.params
+        const {Mobile} = req.body
+        const existingUser = await User.findOneAndUpdate({userName:userName},{$set:{Mobile}})
+        if(!existingUser){
+            res.json({message:"User Does't exist"})
+        }
+        res.json({message:`Updated ${userName} Succesfully`})
+    } catch (error) {
+        res.json(error)
+    }
 }
-export const deleteUser = (req,res)=>{
-    const {id} = req.params
-    res.json(`The ${id} of the user is Deleted Succesfully`)
+export const deleteUser = async(req,res)=>{
+    try {
+        const {userName} = req.params
+        const deleteUser = await User.findOneAndDelete({userName:userName})
+        if(!deleteUser){
+            res.json({message:"User not exists"})
+        }
+        res.json({message:`${userName} deleted succesfully`})
+    } catch (error) {
+        res.json(error)
+    }
 }
