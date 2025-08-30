@@ -6,7 +6,7 @@ const App = () => {
   const[count,setCount] = useState(0)
   useEffect(()=>{
     const fetchData = async()=>{
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        const res = await axios.get('http://localhost:8888')
         const value = await res.data
         setDatas(value)  
         console.log("useEffect");
