@@ -1,4 +1,6 @@
 import User from "../Model/schema.js"
+import bcrypt from "bcryptjs"
+import jwt from 'jsonwebtoken'
 
 export const read = async(req,res)=>{
     const studInfo = await User.find()
@@ -39,3 +41,53 @@ export const deleteUser = async(req,res)=>{
         res.json(error)
     }
 }
+
+export const registerNew = async(req,res)=>{
+    try {
+        const {userEmail,Password} = req.body
+        const existing_User = await User.findOne({userEmail})
+        if(existing_User){
+            res.json({message:"already user Exist"})
+        }
+        const Salt = await bcrypt.genSalt(10)
+        const hassPass = await bcrypt.hash(Password,Salt)
+        const insertUser = await User({userEmail:userEmail,Password:hassPass}).save()
+        res.json({message:`user Registered Succesfully ${insertUser}`})
+    } catch (error) {
+        res.json({error:"Unable to Insert User"})
+    }
+}
+
+export const authUser = (req,res,next)=>{
+    const auth = req.headers['authorization']
+    if(!auth){
+        res.json({message:"access denied"})
+    }
+    const token = auth.split(" ")[1]
+    const decode = jwt.verify(token,'abcdef')
+    req.user = decode
+    next()
+
+}
+export const loginUser = async(req,res)=>{
+    try{
+        const {userEmail,Password} = req.body
+        const existing_User = await User.findOne({userEmail})
+        if(!existing_User){
+            res.json({message:"user Not registered"})
+        }
+        const matchPassword = await bcrypt.compare(Password,existing_User.Password)
+        if(!matchPassword){
+            res.json({message:"Invalid Password"})
+        }
+        const token = jwt.sign({userEmail:existing_User.userEmail},"abcdef",{expiresIn:'5m'})
+        res.json({token,data:{
+            userEmail:userEmail
+        }})
+    }
+    catch(err){
+        res.json(err)
+    }
+}
+
+
